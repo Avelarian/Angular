@@ -23,4 +23,12 @@
 .btn-custom {
   margin-top: 0.4em;
   background-color: white;
+
+  &.primary {
+    background-color: lightskyblue;
+  }
+
+  &.danger {
+    background-color: lightsalmon;
+  }
 }

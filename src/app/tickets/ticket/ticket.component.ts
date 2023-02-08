@@ -2,12 +2,11 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Ticket } from '../../../models/ticket';
 
 @Component({
-  selector: 'app-ticket',
-  templateUrl: './ticket.component.html',
-  styleUrls: ['./ticket.component.scss']
+  selector: "app-ticket",
+  templateUrl: "./ticket.component.html",
+  styleUrls: ["./ticket.component.scss"],
 })
 export class TicketComponent implements OnInit {
-
   /**
    * Inputs & Output allow communication between parent & child components.
    * More information: https://angular.io/guide/component-interaction
@@ -18,13 +17,31 @@ export class TicketComponent implements OnInit {
   @Output()
   ticketHasBeenSelected: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  constructor() {
-  }
+  @Output()
+  ticketHasBeenDeleted: EventEmitter<Ticket> = new EventEmitter<Ticket>();
 
-  ngOnInit() {
-  }
+  constructor() {}
+
+  ngOnInit() {}
 
   selectTicket() {
     this.ticketHasBeenSelected.emit(true);
+  }
+
+  getTicketClass(value: string) {
+    switch (value) {
+      case "SI":
+        return "fas fa-laptop";
+      case "GE":
+        return "fas fa-briefcase";
+      case "GB":
+        return "fas fa-table";
+      default:
+        return "fas fa-question";
+    }
+  }
+
+  deleteTicket(ticket: Ticket) {
+    this.ticketHasBeenDeleted.emit(ticket);
   }
 }
