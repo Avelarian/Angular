@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Ticket } from '../../../models/ticket';
+import { STUDENTS_MOCKED } from "src/mocks/students.mock";
+import { Ticket } from "../../../models/ticket";
 
 @Component({
   selector: "app-ticket",
@@ -44,11 +45,11 @@ export class TicketComponent implements OnInit {
     }
   }
 
-  deleteTicket(ticket: Ticket) {
-    this.ticketHasBeenDeleted.emit(ticket);
-  }
-
   archiveTicket(ticket: Ticket) {
     this.ticketHasBeenArchived.emit(ticket);
+  }
+
+  getStudentName(id: number) {
+    return STUDENTS_MOCKED.find((student) => student.id === id).lastName;
   }
 }

@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { TicketService } from '../../../services/ticket/ticket.service';
-import { Ticket } from '../../../models/ticket';
+import { ChangeDetectorRef, Component, OnInit } from "@angular/core";
+import { TicketService } from "../../../services/ticket/ticket.service";
+import { Ticket } from "../../../models/ticket";
 
 @Component({
   selector: "app-ticket-list",
@@ -11,7 +11,10 @@ export class TicketListComponent implements OnInit {
   public ticketList: Ticket[] = [];
   showAllTickets: boolean = false;
 
-  constructor(public ticketService: TicketService) {
+  constructor(
+    public ticketService: TicketService,
+    private changesDetector: ChangeDetectorRef
+  ) {
     this.ticketService.tickets$.subscribe(
       (tickets) => (this.ticketList = tickets)
     );
@@ -23,11 +26,8 @@ export class TicketListComponent implements OnInit {
     console.log("event received from child:", hasBeenSelected);
   }
 
-  ticketHasBeenDeleted(ticket: Ticket) {
-    this.ticketService.deleteTicket(ticket);
-  }
-
   ticketHasBeenArchived(ticket: Ticket) {
     this.ticketService.archiveTicket(ticket);
+    this.changesDetector.detectChanges();
   }
 }

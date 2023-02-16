@@ -29,11 +29,6 @@ export class TicketService {
     this.tickets$.next(this.ticketList);
   }
 
-  deleteTicket(ticket: Ticket) {
-    this.ticketList = this.ticketList.filter((t: Ticket) => t !== ticket);
-    this.tickets$.next(this.ticketList);
-  }
-
   archiveTicket(ticket: Ticket) {
     ticket.archived = true;
     this.tickets$.next(this.ticketList);

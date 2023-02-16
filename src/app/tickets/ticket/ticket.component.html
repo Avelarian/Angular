@@ -2,10 +2,9 @@
   <!-- we use the {{ }} syntax to display the data, more info: https://angular.io/guide/displaying-data-->
   <h3>{{ticket.title}}</h3>
   <i class="fas fa-calendar-alt"></i> {{ticket.date | date: 'shortTime'}} &nbsp;&nbsp;
-  <i class="far fa-user"></i> {{ticket.author}}
+  <i class="far fa-user"></i> {{ getStudentName(ticket.studentId) }}
   <p><i [ngClass]="getTicketClass(ticket.major)"></i>&nbsp;{{ticket.major}}</p>
   <div>
-    <button class="btn-custom primary" (click)="archiveTicket(ticket)">Archive</button>&nbsp;
-    <button class="btn-custom danger" (click)="deleteTicket(ticket)">Delete</button>
+    <button [disabled]="ticket.archived" class="btn-custom primary" (click)="archiveTicket(ticket)">Archive</button>
   </div>
 </div>
