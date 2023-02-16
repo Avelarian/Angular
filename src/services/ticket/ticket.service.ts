@@ -4,7 +4,7 @@ import { TICKETS_MOCKED } from '../../mocks/tickets.mock';
 import { BehaviorSubject } from 'rxjs/index';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class TicketService {
   /**
@@ -18,10 +18,11 @@ export class TicketService {
    * Observable which contains the list of the tickets.
    * Naming convention: Add '$' at the end of the variable name to highlight it as an Observable.
    */
-  public tickets$: BehaviorSubject<Ticket[]> = new BehaviorSubject(this.ticketList);
+  public tickets$: BehaviorSubject<Ticket[]> = new BehaviorSubject(
+    this.ticketList
+  );
 
-  constructor() {
-  }
+  constructor() {}
 
   addTicket(ticket: Ticket) {
     this.ticketList.push(ticket);
@@ -30,6 +31,11 @@ export class TicketService {
 
   deleteTicket(ticket: Ticket) {
     this.ticketList = this.ticketList.filter((t: Ticket) => t !== ticket);
+    this.tickets$.next(this.ticketList);
+  }
+
+  archiveTicket(ticket: Ticket) {
+    ticket.archived = true;
     this.tickets$.next(this.ticketList);
   }
 }

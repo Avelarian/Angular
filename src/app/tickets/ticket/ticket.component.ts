@@ -20,6 +20,9 @@ export class TicketComponent implements OnInit {
   @Output()
   ticketHasBeenDeleted: EventEmitter<Ticket> = new EventEmitter<Ticket>();
 
+  @Output()
+  ticketHasBeenArchived: EventEmitter<Ticket> = new EventEmitter<Ticket>();
+
   constructor() {}
 
   ngOnInit() {}
@@ -43,5 +46,9 @@ export class TicketComponent implements OnInit {
 
   deleteTicket(ticket: Ticket) {
     this.ticketHasBeenDeleted.emit(ticket);
+  }
+
+  archiveTicket(ticket: Ticket) {
+    this.ticketHasBeenArchived.emit(ticket);
   }
 }

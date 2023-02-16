@@ -9,6 +9,7 @@ import { Ticket } from '../../../models/ticket';
 })
 export class TicketListComponent implements OnInit {
   public ticketList: Ticket[] = [];
+  showAllTickets: boolean = false;
 
   constructor(public ticketService: TicketService) {
     this.ticketService.tickets$.subscribe(
@@ -24,5 +25,9 @@ export class TicketListComponent implements OnInit {
 
   ticketHasBeenDeleted(ticket: Ticket) {
     this.ticketService.deleteTicket(ticket);
+  }
+
+  ticketHasBeenArchived(ticket: Ticket) {
+    this.ticketService.archiveTicket(ticket);
   }
 }
