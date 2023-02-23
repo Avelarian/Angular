@@ -1,1 +1,1 @@
-export { TicketListComponent } from './ticket-list.component';
+export { TicketListComponent } from "./ticket-list.component";

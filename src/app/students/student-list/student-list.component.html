@@ -1,0 +1,9 @@
+<div class="content">
+  <app-student-form></app-student-form>
+  <div class="student-list">
+    <div class="student" *ngFor="let student of studentList">
+        <app-student [student]="student"></app-student>
+    </div>
+  </div>
+</div>
+

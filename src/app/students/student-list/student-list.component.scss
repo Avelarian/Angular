@@ -1,9 +1,9 @@
 // You can apply style directly to a component
-app-ticket {
+app-student {
   margin: 0.2em;
 }
 
-app-ticket-form {
+app-student-form {
   margin-left: 1em;
 }
 
@@ -11,15 +11,15 @@ app-ticket-form {
   display: flex;
 }
 
-.ticket-list {
+.student-list {
   flex: 1;
 }
 
-.ticket {
+.student {
   width: 40%;
 }
 
-.ticket-list {
+.student-list {
   display: flex;
   flex-direction: column;
   align-items: center;

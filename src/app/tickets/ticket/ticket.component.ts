@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { STUDENTS_MOCKED } from "src/mocks/students.mock";
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { StudentService } from "src/services/student/student.service";
 import { Ticket } from "../../../models/ticket";
 
 @Component({
@@ -24,7 +24,7 @@ export class TicketComponent implements OnInit {
   @Output()
   ticketHasBeenArchived: EventEmitter<Ticket> = new EventEmitter<Ticket>();
 
-  constructor() {}
+  constructor(public studentService: StudentService) {}
 
   ngOnInit() {}
 
@@ -50,6 +50,8 @@ export class TicketComponent implements OnInit {
   }
 
   getStudentName(id: number) {
-    return STUDENTS_MOCKED.find((student) => student.id === id).lastName;
+    const student = this.studentService.getStudentById(id);
+
+    return student.lastName + " " + student.firstName;
   }
 }

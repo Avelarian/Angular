@@ -1,5 +1,4 @@
-import { Ticket } from '../models/ticket';
-import { STUDENTS_MOCKED } from "./students.mock";
+import { Ticket } from "../models/ticket";
 
 const dateToday: Date = new Date();
 
